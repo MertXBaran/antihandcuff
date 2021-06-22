@@ -1,2 +1,2 @@
 # meseixdeyam
-Fivem polis scriptleri üzerinden kelepçeleme
+Fivem polis scriptleri üzerinden kelepçeleme methodlarını fixler
