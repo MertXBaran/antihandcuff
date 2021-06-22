@@ -153,6 +153,8 @@ esxinanasinisikm = {
     ["esx_policejob:handcuff"],
 }
 
+local malmutnereyisikemezlimit = 15 -- Buraya kendiniz limit verebilirsiniz
+
 local s2mi7 = {}
     for malmut in pairs(esxinanasinisikm) do
     RegisterServerEvent(malmut)
@@ -160,7 +162,7 @@ local s2mi7 = {}
         local xPlayer = ESX.GetPlayerFromId(source)
             if s2mi7[source] == nil or s2mi7[source] == 0 then
             s2mi7[source] = 1
-            elseif s2mi7[source] >= 10 then
+            elseif s2mi7[source] >= malmutnereyisikemezlimit then
             ESX.GetPlayerFromId(source).kick("Barann tarafından banlandınız hileci değil iseniz yeniden giriş yapınız hileciyseniz farklı methodlar ile görüşürüz :))")
         else
             s2mi7[source] = s2mi7[source] + 1
