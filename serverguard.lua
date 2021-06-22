@@ -135,5 +135,5 @@ end)
 --end)
 
 
-
+-- #NEREYİ-SİKELİM --> Fast Community
 --Aynen yarramı kelepçele
