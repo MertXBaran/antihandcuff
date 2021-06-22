@@ -135,5 +135,41 @@ end)
 --end)
 
 
+--Buraya Malmut'Un triggerlerini sınırlamak isterseniz yazın
+esxinanasinisikm = {
+    ["esx_sheriffjob:givehandcuff"],
+    ["esx_sheriffjob:requestarrest"],
+    ["esx_sheriffjob:message"],
+    ["esx_sheriffjob:OutVehicle"],
+    ["esx_sheriffjob:putInVehicle"],
+    ["esx_sheriffjob:drag"],
+    ["esx_sheriffjob:handcuff"],
+    ["esx_policejob:givehandcuff"],
+    ["esx_policejob:requestrelease"],
+    ["esx_policejob:requestarrest"],
+    ["esx_policejob:message"],
+    ["esx_policejob:putInVehicle"],
+    ["esx_policejob:drag"],
+    ["esx_policejob:handcuff"],
+}
+
+local s2mi7 = {}
+    for malmut in pairs(esxinanasinisikm) do
+    RegisterServerEvent(malmut)
+    AddEventHandler(malmut, function(playerID)
+        local xPlayer = ESX.GetPlayerFromId(source)
+            if s2mi7[source] == nil or s2mi7[source] == 0 then
+            s2mi7[source] = 1
+            elseif s2mi7[source] >= 10 then
+            ESX.GetPlayerFromId(source).kick("Barann tarafından banlandınız hileci değil iseniz yeniden giriş yapınız hileciyseniz farklı methodlar ile görüşürüz :))")
+        else
+            s2mi7[source] = s2mi7[source] + 1
+        end
+        Wait(1800)
+        s2mi7[source] = 0
+    end)
+end
+
+
 -- #NEREYİ-SİKELİM --> Fast Community
 --Aynen yarramı kelepçele
