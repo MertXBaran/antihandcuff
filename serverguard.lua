@@ -135,40 +135,40 @@ end)
 --end)
 
 
---Buraya Malmut'Un triggerlerini sınırlamak isterseniz yazın
-esxinanasinisikm = {
-    ["esx_sheriffjob:givehandcuff"],
-    ["esx_sheriffjob:requestarrest"],
-    ["esx_sheriffjob:message"],
-    ["esx_sheriffjob:OutVehicle"],
-    ["esx_sheriffjob:putInVehicle"],
-    ["esx_sheriffjob:drag"],
-    ["esx_sheriffjob:handcuff"],
-    ["esx_policejob:givehandcuff"],
-    ["esx_policejob:requestrelease"],
-    ["esx_policejob:requestarrest"],
-    ["esx_policejob:message"],
-    ["esx_policejob:putInVehicle"],
-    ["esx_policejob:drag"],
-    ["esx_policejob:handcuff"],
+
+--MALMUT LİMİTLENDİRME
+UmutunAnnesi = {}
+local barannlimit = 15
+UmutunEventleri = { --Buraya MALMUT'un limitlendirmesini istediği eventleri ekleyebilirsiniz
+    ["esx_sheriffjob:givehandcuff"] = barannlimit,
+    ["esx_sheriffjob:requestarrest"] = barannlimit,
+    ["esx_sheriffjob:message"] = barannlimit,
+    ["esx_sheriffjob:OutVehicle"] = barannlimit,
+    ["esx_sheriffjob:putInVehicle"] = barannlimit,
+    ["esx_sheriffjob:drag"] = barannlimit,
+    ["esx_sheriffjob:handcuff"] = barannlimit,
+    ["esx_policejob:givehandcuff"] = barannlimit,
+    ["esx_policejob:requestrelease"] = barannlimit,
+    ["esx_policejob:requestarrest"] = barannlimit,
+    ["esx_policejob:message"] = barannlimit,
+    ["esx_policejob:putInVehicle"] = barannlimit,
+    ["esx_policejob:drag"] = barannlimit,
+    ["esx_policejob:handcuff"] = barannlimit,
 }
 
-local malmutnereyisikemezlimit = 15 -- Buraya kendiniz limit verebilirsiniz
-
-local s2mi7 = {}
-    for malmut in pairs(esxinanasinisikm) do
-    RegisterServerEvent(malmut)
-    AddEventHandler(malmut, function(playerID)
-        local xPlayer = ESX.GetPlayerFromId(source)
-            if s2mi7[source] == nil or s2mi7[source] == 0 then
-            s2mi7[source] = 1
-            elseif s2mi7[source] >= malmutnereyisikemezlimit then
-            ESX.GetPlayerFromId(source).kick("Barann tarafından banlandınız hileci değil iseniz yeniden giriş yapınız hileciyseniz farklı methodlar ile görüşürüz :))")
+for event,limit in pairs(UmutunEventleri) do
+    RegisterServerEvent(event)
+    AddEventHandler(event, function(...)
+        local _source = source
+        if UmutunAnnesi[_source] then
+            if UmutunAnnesi[_source] > limit then
+                ESX.GetPlayerFromId(source).kick("Barann tarafından banlandınız hileci değil iseniz yeniden giriş yapınız hileciyseniz farklı methodlar ile görüşürüz :))")
+            else
+                UmutunAnnesi[_source] = UmutunAnnesi[_source] + 1
+            end
         else
-            s2mi7[source] = s2mi7[source] + 1
+            UmutunAnnesi[_source] = 1
         end
-        Wait(1800)
-        s2mi7[source] = 0
     end)
 end
 
