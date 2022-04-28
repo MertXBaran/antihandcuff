@@ -1,3 +1,3 @@
-# meseixdeyam
-Fivem polis scriptleri üzerinden kelepçeleme methodlarını fixler - Limitlendirir
-via / n0thing
+# Anti Handcuff
+
+Sunucunuzdaki polis sistemlerinden yararlanarak oyuncularınızı kelepçelemelerini önlemek için gerekli bir dosya
